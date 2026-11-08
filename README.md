@@ -4,6 +4,8 @@ What happens when an order is committed, but the client never receives the respo
 
 Run a small Python and SQLite API, drop a response after commit, then retry the request. The saved order is returned with the same ID. Seven tests also cover concurrent calls, conflicting purchases and a server restart.
 
+Follow the [step-by-step walkthrough on Fone](https://fone.cc/insights/python-sqlite-idempotent-order-api/?utm_source=github&utm_medium=referral&utm_campaign=gh_order_api_20261102) alongside the code. It shows the HTTP requests and the saved order after each retry.
+
 ## Run the tests
 
 Use Python 3.10+ with SQLite support. There are no pip dependencies. Download this repository and run these commands inside its directory.
@@ -83,6 +85,8 @@ This localhost lab isolates order creation. Payment verification and delivery ar
 The server binds to `127.0.0.1`. Keep it local. It has no authentication, tenant isolation, TLS or key expiration. The deliberate disconnect hook is for the experiment. SQLite serializes writes; the concurrency test does not measure production throughput.
 
 Read the [full walkthrough on Fone](https://fone.cc/insights/python-sqlite-idempotent-order-api/?utm_source=github&utm_medium=referral&utm_campaign=gh_order_api_20261102) for the order-state discussion. For the related merchant checkout and delivery product, see [StableIn Payments](https://fone.cc/products/stablein-payments/?utm_source=github&utm_medium=referral&utm_campaign=gh_order_api_20261102). This standalone example uses Python and SQLite; StableIn has a separate implementation.
+
+The tutorial is also available on [DEV](https://dev.to/imminer668/your-order-api-needs-more-than-an-idempotency-key-46j0) and [Hashnode](https://0xfone.hashnode.dev/your-order-api-needs-more-than-an-idempotency-key).
 
 ## Reuse
 
